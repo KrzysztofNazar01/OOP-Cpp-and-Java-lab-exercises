@@ -8,8 +8,8 @@ import java.util.List;
  * @author TB
  */
 public class Wycieczka {
-    private String nazwa;
-    private List<ElementWycieczki> elementy = new ArrayList<>();
+    private final String nazwa;
+    private final List<ElementWycieczki> elementy = new ArrayList<>();
 
     public Wycieczka(String nazwa) {
         this.nazwa = nazwa;
@@ -30,16 +30,16 @@ public class Wycieczka {
                 .reduce(0.0, (a,b) -> a+b);
     }
     
-//    /**
-//     * @return Sumaryczny czas wszystkich atrakcji 
-//     */
-//    public double getCzasAtrakcji() {
-//        return elementy.stream()
-//                .filter(ew -> ew instanceof Atrakcja)
-//                .map(ew -> (Atrakcja)ew)
-//                .map(Atrakcja::getWymaganyCzas)
-//                .reduce(0.0, (a,b) -> a+b);
-//    }
+/*    *//**
+     * @return Sumaryczny czas wszystkich atrakcji
+     *//*
+    public double getCzasAtrakcji() {
+        return elementy.stream()
+                .filter(ew -> ew instanceof Atrakcja)
+                .map(ew -> (Atrakcja)ew)
+                .map(Atrakcja::getWymaganyCzas)
+                .reduce(0.0, (a,b) -> a+b);
+    }*/
     
     public ElementWycieczki getElementWycieczki(int i) {
         return elementy.get(i);

@@ -9,8 +9,8 @@ import java.util.Set;
  * @author TB
  */
 public class Grupa {
-    private Set<Uczestnik> uczestnicy;
-    private Uczestnik przewodnik;
+    private final Set<Uczestnik> uczestnicy;
+    private final Uczestnik przewodnik;
     
     public Grupa(Uczestnik przewodnik, Collection<Uczestnik> uczestnicy) {
         this.uczestnicy = new HashSet<>(uczestnicy);

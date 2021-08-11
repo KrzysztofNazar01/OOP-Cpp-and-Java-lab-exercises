@@ -5,7 +5,7 @@ package pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki;
  * @author TB
  */
 public abstract class Wedrowka implements ElementWycieczki {
-    private double odleglosc;
+    private final double odleglosc;
     
     /**
      * @param odleglosc - długość wędrówki w GOTach
@@ -14,7 +14,7 @@ public abstract class Wedrowka implements ElementWycieczki {
         this.odleglosc = odleglosc;
     }
 
-    public double getOdleglosc() {
+   public double getOdleglosc() {
         return odleglosc;
     }
     

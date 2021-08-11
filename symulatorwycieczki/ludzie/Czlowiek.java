@@ -10,7 +10,7 @@ public abstract class Czlowiek implements Uczestnik {
 
     public enum Plec{
         KOBIETA,
-        MEZCZYZNA;
+        MEZCZYZNA
     }
     
     

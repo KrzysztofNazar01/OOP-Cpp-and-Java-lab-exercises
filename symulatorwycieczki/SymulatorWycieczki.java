@@ -3,14 +3,15 @@ package pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.BeskidzkiPiechur;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.MistrzPanoram;
 
+import java.util.*;
 /**
  *
  * @author TB
  */
 public class SymulatorWycieczki {
     
-    private Grupa grupa;
-    private Wycieczka wycieczka;
+    private final Grupa grupa;
+    private final Wycieczka wycieczka;
     private int pozycjaGrupy = 0;
     private double czasWycieczki = 0.0;
     private double pokonanyDystans = 0.0;
@@ -84,9 +85,9 @@ public class SymulatorWycieczki {
                 double czas = atrakcja.getWymaganyCzas();
 
                 for(Uczestnik u : grupa.getUczestnicy()) {
-                    if(u instanceof MistrzPanoram && atrakcja.getNazwa() == "Panorama")
+                    if(u instanceof MistrzPanoram && atrakcja.getNazwa().equals("Panorama"))
                         u.reagujNaAtrakcje(atrakcja, 2*czas);
-                    else if(u instanceof BeskidzkiPiechur && atrakcja.getNazwa() == "Drewniana Cerkiew")
+                    else if(u instanceof BeskidzkiPiechur && atrakcja.getNazwa().equals("Drewniana Cerkiew"))
                         u.reagujNaAtrakcje(atrakcja, 2*czas);
                     else
 
@@ -96,14 +97,40 @@ public class SymulatorWycieczki {
                 System.out.println("Atrakcja zajęła grupie " + czas + " h");
                 czasWycieczki += czas;
             }
-            
+
+            for(SluchaczPostepow s : kolekcjaSluchaczPostepow)
+                s.aktualizujPostep(elementWycieczki, pozycjaGrupy+1 , wycieczka.getLiczbaElementowWycieczki());
+
             System.out.println();
            
         }
         System.out.printf("Trasa zajęła grupie %.2f h, przeszli oni %.2f GOT.\n", czasWycieczki, pokonanyDystans);
         System.out.println("===Koniec symulacji===");
     }
-    
-    
+
+    private Set<SluchaczPostepow> kolekcjaSluchaczPostepow = new HashSet<>();
+
+    private class klasaWewnetrzna implements SluchaczPostepow{
+        @Override
+        public void aktualizujPostep(ElementWycieczki elementWycieczki, int lp, int liczbaElementow){
+            if(lp == liczbaElementow){
+                System.out.println("Koniec wycieczki.");
+            }
+            else if(lp == liczbaElementow - 1){
+                System.out.println("Teraz jest: " + elementWycieczki.getNazwa() + ", został tylko jeden element wycieczki" );
+            }
+            else{
+                System.out.println("Teraz jest: " + elementWycieczki.getNazwa() + ", zostało " + (liczbaElementow - lp) + " elementów wycieczki.");
+            }
+        }
+    }
+
+    public void setListaSluchaczy(Set<SluchaczPostepow> kolekcjaSluchaczPostepow){
+        this.kolekcjaSluchaczPostepow = kolekcjaSluchaczPostepow;
+    }
+
+    public SluchaczPostepow klasaWewnetrzna(){
+        return new klasaWewnetrzna();
+    }
     
 }

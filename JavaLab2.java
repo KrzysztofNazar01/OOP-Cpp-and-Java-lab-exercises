@@ -21,13 +21,14 @@ import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.MistrzPanoram;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.CzlowiekZKontuzja;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.BeskidzkiPiechur;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.StudentKSG;
-
+import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.SluchaczPostepow;
 /**
  *
  * @author TB
  */
 public class JavaLab2 {
     public static void main(String[] args) {
+
         Wycieczka w = mojaWycieczka();
         
         PrzewodnikBeskidzki przewodnik = new PrzewodnikBeskidzki("Stefan", "Długonogi", Czlowiek.Plec.MEZCZYZNA);
@@ -39,9 +40,14 @@ public class JavaLab2 {
         uczestnicy.add(new MistrzPanoram("Panoramiarz","Nowak", Czlowiek.Plec.MEZCZYZNA));
         uczestnicy.add(new Student("SzymonStudent","Stary", Czlowiek.Plec.MEZCZYZNA));
         Grupa g = new Grupa(przewodnik, uczestnicy);
-        
+
+
         SymulatorWycieczki symulator = new SymulatorWycieczki(g, w);
-        
+
+        Set<SluchaczPostepow> listaSluchaczy = new HashSet<>();
+        listaSluchaczy.add(symulator.klasaWewnetrzna());
+        symulator.setListaSluchaczy(listaSluchaczy);
+
         symulator.symuluj();
     }
     
@@ -59,18 +65,18 @@ public class JavaLab2 {
     }
 
     public static Wycieczka mojaWycieczka() {
-        Wycieczka ret = new Wycieczka("Zadanie 2");
+        Wycieczka ret = new Wycieczka("--MOJA WYCIECZKA--");
         ret.dodajElementWycieczki(new GestyLas(1.0));
         ret.dodajElementWycieczki(new Las(3.0));
-        ret.dodajElementWycieczki(new Panorama("Na Góry"));
+        ret.dodajElementWycieczki(new Panorama("Potoki"));
         ret.dodajElementWycieczki(new Droga(4.0));
         ret.dodajElementWycieczki(new Schronisko("PTTK"));
         ret.dodajElementWycieczki(new Droga(4.0));
-        ret.dodajElementWycieczki(new DrewnianaCerkiew("Smolnik"));
+        ret.dodajElementWycieczki(new DrewnianaCerkiew("Drewniana Cerkiwe w Smolniku"));
         ret.dodajElementWycieczki(new Las(2.0));
-        ret.dodajElementWycieczki(new CmentarzZIWojny("Tajemnicza Cmentarna miejscowosc"));
+        ret.dodajElementWycieczki(new CmentarzZIWojny("Cmentarz z I Wojny w Beskidach"));
         ret.dodajElementWycieczki(new Droga(10.0));
-        ret.dodajElementWycieczki(new Panorama("NA potok"));
+        ret.dodajElementWycieczki(new Panorama("Góry"));
         return ret;
     }
    
