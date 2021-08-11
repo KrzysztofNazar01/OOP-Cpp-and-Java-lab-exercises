@@ -2,15 +2,15 @@ package pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.gory;
 
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.Wedrowka;
 
-public class Las extends Wedrowka{
+public class PrzeprawaPrzezRzeke extends Wedrowka {
 
-    public Las(double odleglosc) {
+    public PrzeprawaPrzezRzeke(double odleglosc) {
         super(odleglosc);
     }
 
     @Override
     public double modyfikujPredkoscGrupy(double predkosc) {
-        return 0.5f * predkosc;
+        return 0.1f * predkosc;
     }
 
     @Override
@@ -20,8 +20,8 @@ public class Las extends Wedrowka{
 
     @Override
     public String getNazwa() {
-        return "Las";
+        return "PrzeprawaPrzezRzeke";
     }
-    
-    
+
+
 }

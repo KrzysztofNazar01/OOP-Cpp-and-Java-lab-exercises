@@ -24,5 +24,6 @@ public interface Uczestnik {
     void opiszWycieczke(Wycieczka wycieczka);
     
     void reagujNaWedrowke(Wedrowka w, double czas);
-    
+
+    void reagujNaAtrakcje(Atrakcja a, double czas);
 }

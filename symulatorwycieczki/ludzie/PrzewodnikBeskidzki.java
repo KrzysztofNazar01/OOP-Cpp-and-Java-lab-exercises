@@ -4,19 +4,12 @@ import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.Atrakcja;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.Wycieczka;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.gory.beskidy.DrewnianaCerkiew;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.gory.beskidy.CmentarzZIWojny;
-import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.gory.Panorama;
-/**
- *
- * @author TB
- */
-public class PrzewodnikStudencki extends Student {
+import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.gory.*;
 
-    public PrzewodnikStudencki(String imie, String nazwisko, Plec plec) {
-        super(imie, nazwisko, plec, 5.0);
-    }
+public class PrzewodnikBeskidzki extends PrzewodnikStudencki{
 
-    protected PrzewodnikStudencki(String imie, String nazwisko, Plec plec, double maksymalnaPredkosc, double czasPelnejRegeneracji, double czasPelnegoZmeczenia) {
-        super(imie, nazwisko, plec, maksymalnaPredkosc, czasPelnejRegeneracji, czasPelnegoZmeczenia);
+    public PrzewodnikBeskidzki(String imie, String nazwisko, Plec plec) {
+        super(imie, nazwisko, plec, 5.0, 16.0, 18.0);
     }
 
     @Override
@@ -27,7 +20,7 @@ public class PrzewodnikStudencki extends Student {
 
     @Override
     public int getUmiejetnosciNawigacyjne() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -49,7 +42,8 @@ public class PrzewodnikStudencki extends Student {
         else {
             super.reagujNaAtrakcje(a, czas);
         }
-    }
+   }
+
 
 
 }

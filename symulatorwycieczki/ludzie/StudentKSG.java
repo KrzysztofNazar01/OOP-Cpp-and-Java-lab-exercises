@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie;
 
+import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.Atrakcja;
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.Wedrowka;
 
 /**
@@ -21,6 +22,10 @@ public class StudentKSG extends Student{
 //        else
             super.reagujNaWedrowke(w, czas);
     }
-    
-    
+
+    @Override
+    public void reagujNaAtrakcje(Atrakcja a, double czas) {
+        regeneruj(czas);
+        mow("Hmm, atrakcja: "+a.getNazwa());
+    }
 }

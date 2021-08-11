@@ -1,7 +1,7 @@
 package pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki;
 
-import java.util.HashSet;
-import java.util.Set;
+import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.BeskidzkiPiechur;
+import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.ludzie.MistrzPanoram;
 
 /**
  *
@@ -68,12 +68,33 @@ public class SymulatorWycieczki {
                 double czas = wedrowka.getOdleglosc()/predkoscGrupy;
                 
                 for(Uczestnik u : grupa.getUczestnicy()) {
-                    u.reagujNaWedrowke(wedrowka, czas);
+                        u.reagujNaWedrowke(wedrowka, czas);
                 }
                 
                 System.out.println("Wędrówka zajęła grupie " + czas + " h");
                 czasWycieczki += czas;
                 pokonanyDystans += wedrowka.getOdleglosc();
+            }
+
+            if(elementWycieczki instanceof Atrakcja) {
+                Atrakcja atrakcja = (Atrakcja) elementWycieczki;
+
+                System.out.println("Grupa jest w atrakcji: "+atrakcja.getNazwa());
+
+                double czas = atrakcja.getWymaganyCzas();
+
+                for(Uczestnik u : grupa.getUczestnicy()) {
+                    if(u instanceof MistrzPanoram && atrakcja.getNazwa() == "Panorama")
+                        u.reagujNaAtrakcje(atrakcja, 2*czas);
+                    else if(u instanceof BeskidzkiPiechur && atrakcja.getNazwa() == "Drewniana Cerkiew")
+                        u.reagujNaAtrakcje(atrakcja, 2*czas);
+                    else
+
+                    u.reagujNaAtrakcje(atrakcja, czas);
+                }
+
+                System.out.println("Atrakcja zajęła grupie " + czas + " h");
+                czasWycieczki += czas;
             }
             
             System.out.println();

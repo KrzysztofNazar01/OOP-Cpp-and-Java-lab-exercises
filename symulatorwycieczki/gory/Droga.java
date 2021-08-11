@@ -2,10 +2,7 @@ package pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.gory;
 
 import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.Wedrowka;
 
-/**
- *
- * @author TB
- */
+
 public class Droga extends Wedrowka{
 
     public Droga(double odleglosc) {

@@ -7,19 +7,9 @@ import pl.edu.pg.eti.ksg.po.lab2.symulatorwycieczki.*;
  */
 public abstract class Czlowiek implements Uczestnik {
     
-    /**
-     * Płeć
-     */
-    public enum Plec
-    {
-        /**
-         * Kobieta
-         */
+
+    public enum Plec{
         KOBIETA,
-        
-        /**
-         * Mężczyzna
-         */
         MEZCZYZNA;
     }
     
@@ -45,9 +35,6 @@ public abstract class Czlowiek implements Uczestnik {
         this.czasPelnejRegeneracji = czasPelnejRegeneracji;
         this.czasPelnegoZmeczenia = czasPelnegoZmeczenia;
     }
-    
-    
-
 
     public String getImie() {
         return imie;
@@ -96,6 +83,9 @@ public abstract class Czlowiek implements Uczestnik {
         mow("Hmm, wędrówka: "+w.getNazwa());
     }
 
+
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -117,10 +107,10 @@ public abstract class Czlowiek implements Uczestnik {
                 Wedrowka wedrowka = (Wedrowka) elementWycieczki;
                 mow(lp+". Wędrówka: "+wedrowka.getNazwa() + " długość: "+wedrowka.getOdleglosc() + " GOT");
             }
-//            else if(elementWycieczki instanceof Atrakcja) {
-//                Atrakcja atrakcja = (Atrakcja) elementWycieczki;
-//                mow(lp+". Atrakcja: "+atrakcja.getNazwa() + " spędzimy tam " + atrakcja.getWymaganyCzas() + " h");
-//            }
+            else if(elementWycieczki instanceof Atrakcja) {
+               Atrakcja atrakcja = (Atrakcja) elementWycieczki;
+                mow(lp+". Atrakcja: "+atrakcja.getNazwa() + " spędzimy tam " + atrakcja.getWymaganyCzas() + " h");
+           }
             else {
                 mow(lp+". Inny element: "+elementWycieczki.getNazwa());
             }

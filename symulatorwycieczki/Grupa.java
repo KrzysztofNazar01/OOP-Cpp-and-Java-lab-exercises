@@ -23,6 +23,9 @@ public class Grupa {
     public double getPredkosc() {
         return uczestnicy.stream().map(Uczestnik::getBazowaPredkosc).min(Double::compare).orElse(0.0);
     }
+    public double getZmeczenieGrupy() {
+        return uczestnicy.stream().map(Uczestnik::getPoziomZmeczenia).min(Double::compare).orElse(0.0);
+    }
     
     public int getUmiejetnosciNawigacyjne() {
         return przewodnik.getUmiejetnosciNawigacyjne();
